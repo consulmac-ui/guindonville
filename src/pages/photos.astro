@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+const photos = [
+  ['banniere.jpg', "« Des logements avant un stationnement » : la bannière tendue entre les arbres à l'entrée du site, avec l'adresse du site web, juin 2003.", 'wide'],
+  ['maison-1153.jpg', "La maison de pierre du 1153, chemin du Condor."],
+  ['maison-1161.jpg', "Le 1161, chemin du Condor."],
+  ['maison-2579.jpg', "Le chalet blanc du 2579."],
+  ['maison-2633.jpg', "Le 2633, « sur le top de la montagne », avec ses cadres turquoise."],
+  ['richard-desjardins-visite.jpg', "Richard Desjardins en visite à Guindonville, avril 2003, avec des résidents, devant la maison de bois rond."],
+  ['sq-bell-3-juillet-a.jpg', "3 juillet 2003 : deux voitures de la Sûreté du Québec escortent un camion de télécommunications venu débrancher les voisins."],
+  ['sq-bell-3-juillet-b.jpg', "Le même matin, le technicien et les agents devant les voitures de patrouille."],
+  ['peinture-maison-marie-1.jpg', "5 juillet 2003 : la peinture de la maison de Marie en direct, au son du violoncelle. « Terra, libertad, vivará ! »"],
+  ['peinture-maison-marie-2.jpg', "Une fée sur le mur de la maison de Marie."],
+  ['peinture-maison-marie-3.jpg', "« We won't forget » : les mots laissés sur le mur."],
+  ['camion-radio-canada.jpg', "Le camion satellite de Radio-Canada sur le chemin du Condor, « en direct sur le monde »."],
+  ['kathy-toit-baril.jpg', "Kathy sur le toit de sa maison, enchaînée à un baril de béton de 800 livres."],
+  ['plateforme-julie.jpg', "La plate-forme de Julie, dans un grand conifère."],
+  ['arbre-de-julie.jpg', "L'arbre de Julie, le 6 juillet au matin."],
+  ['police-6-juillet.jpg', "Les policiers sur le site pendant la démolition."],
+  ['municipalite-6-juillet.jpg', "Le 6 juillet, au téléphone, sous les arbres. Le site de 2003 identifiait cet homme comme le directeur général de la municipalité."],
+  ['pelle-mecanique.jpg', "La pelle mécanique d'une compagnie de Saint-Jovite. Aucune entreprise du secteur n'avait accepté le contrat."],
+  ['debris-6-juillet.jpg', "Les débris : un frigidaire, un poêle, des meubles, des planches."],
+];
+---
+<Base title="Photos" current="/photos/">
+  <p class="eyebrow">Photos</p>
+  <h1>Ce qui a survécu</h1>
+  <p class="lede">Vingt photos du site de 2003, retrouvées dans les archives de la Wayback Machine. Elles sont petites, comme on les mettait en ligne à l'époque, avec une connexion modem. Il y en avait une quarantaine d'autres, dont les photos du 4 juillet et celles de la vente de garage, qui n'ont pas été conservées.</p>
+  <div class="gallery">
+    {photos.map(([file, caption, cls]) => (
+      <figure class={cls}><img src={`/img/${file}`} alt={caption} loading="lazy" /><figcaption>{caption}</figcaption></figure>
+    ))}
+  </div>
+  <p class="prose">Pour les images en mouvement, voir <a href="/film/">le film tourné sur place en 2003</a>.</p>
+</Base>

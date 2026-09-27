@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+const { title, description = "Guindonville, Val-David, 2003 : sept petites maisons, dix locataires, un stationnement. Le site de la résistance, reconstitué à partir des archives.", current = '' } = Astro.props;
+const nav = [
+  ['/', 'Accueil'],
+  ['/histoire/', 'Histoire'],
+  ['/affaire/', "L'affaire"],
+  ['/chronologie/', 'Chronologie'],
+  ['/le-6-juillet/', 'Le 6 juillet'],
+  ['/photos/', 'Photos'],
+  ['/film/', 'Le film'],
+  ['/textes/', 'Textes'],
+  ['/presse/', 'Presse'],
+  ['/english/', 'English'],
+];
+const fullTitle = title ? `${title} · Guindonville` : 'Guindonville — Val-David, 2003';
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/img/kathy-toit-baril.jpg" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip" href="#contenu">Aller au contenu</a>
+    <header class="site">
+      <div class="site-inner">
+        <a class="brand" href="/">
+          <img src="/img/logo-guindonville.png" alt="" width="44" height="36" />
+          <span><strong>Guindonville</strong><small>Val-David · 2003</small></span>
+        </a>
+        <nav class="main" aria-label="Principale">
+          {nav.map(([href, label]) => (
+            <a href={href} aria-current={current === href ? 'page' : undefined}>{label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main id="contenu">
+      <slot />
+    </main>
+    <footer class="site">
+      <div class="site-inner">
+        <p>Site original (2003) réalisé par les locataires de Guindonville et leurs sympathisants, hébergé à l'époque à l'adresse guindonville.ca.tc. Reconstitué en 2026 à partir des copies conservées par la Wayback Machine (Internet Archive), avec les textes, les photos et la revue de presse d'origine.</p>
+        <p>Les textes d'époque sont reproduits tels quels : ils reflètent le point de vue des locataires et de leurs appuis en 2003. Les faits datés recoupent les archives municipales, Le Devoir et le reportage de Zone Libre (Radio-Canada).</p>
+        <p>Photos : locataires et sympathisants de Guindonville, 2003. Images du film : Christian Brochu, 2003.</p>
+      </div>
+    </footer>
+  </body>
+</html>

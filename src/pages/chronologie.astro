@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+const events = [
+  ['1941', "Yvon Guindon, « Ti-Yves », achète 62 acres au pied du mont Condor. Jusqu'en 1950, il y bâtit quinze petites maisons louées aux familles du village et aux touristes, puis un petit centre de ski et une auberge sur un rocher."],
+  ['Mai 2002', "Le conseil municipal de Val-David autorise un emprunt de 500 000 $ pour aménager l'entrée du parc régional Dufresne sur la terre de M. Guindon : un stationnement de 300 places et un chalet d'accueil. Les locataires apprendront le projet après coup."],
+  ['Sept.-oct. 2002', "Le journal Ski-se-dit publie « Guindonville, une histoire de conscience sociale », de Claude Proulx."],
+  ['Décembre 2002', "Expropriation du terrain d'Yvon Guindon, 86 ans, pour 208 000 $ fixés par l'évaluation municipale. Les sept maisons seront démolies ; les locataires reçoivent l'avis de quitter pour le 1er juillet 2003."],
+  ['Hiver 2003', "Jean-Pierre Charce, locataire, lance la contestation : lettres aux journaux, pétition de 1 225 noms (résidents de Val-David et touristes) contre le projet. Les avis publics officiels, eux, n'avaient recueilli aucune signature."],
+  ['1er février 2003', "Marche pacifique de protestation dans les rues de Val-David : plus de 200 manifestants. Le Devoir titre « Plus de bidonville à Val-David ? »."],
+  ['Février-mars 2003', "Une seconde pétition de 500 signatures, dont celles de Richard Desjardins, Gilles Vigneault, Richard Séguin, Michel Rivard et Luc Picard, demande au ministre des Affaires municipales, André Boisclair, d'intervenir. Seul résultat : la suggestion de construire des HLM, que le directeur général écarte en affirmant que Val-David n'a pas besoin de logements sociaux. Le 6 mars, M. Guindon conteste le prix offert."],
+  ['24 avril 2003', "Richard Desjardins vient à Guindonville et épouse la cause. Dans Le Devoir : « Se faire jeter à la rue, de même, franchement, c'est de l'abus de pouvoir direct ! » L'équipe de Zone Libre (Radio-Canada) décide de suivre les résidents."],
+  ['21 mai 2003', "Cour supérieure du Québec. Représentés par un avocat de l'aide juridique, les locataires demandent un report de l'éviction jusqu'au 31 octobre, le temps de se reloger. La veille, l'équipe municipale s'était précipitée sur les lieux pour dessiner l'esquisse du plan d'aménagement, jamais faite auparavant."],
+  ['23 mai 2003', "À 8 h, une pépine entreprend des études de sol sans préavis. Altercation : des manifestants montent sur l'engin pour l'immobiliser ; le directeur général appelle des renforts, trois voitures de la SQ arrivent. Les contestataires dansent au son des tam-tams et replantent des arbres arrachés."],
+  ['2 juin 2003', "Le juge Pierre Journet rend son verdict : toutes les demandes des locataires sont rejetées. Ils devront partir le 1er juillet. La mairie leur a versé une indemnité provisionnelle de trois mois de loyer, avec laquelle ils doivent payer leur loyer à la municipalité."],
+  ['8-10 juin 2003', "Au conseil municipal, on s'inquiète des débordements possibles lors de la démolition ; si les locataires refusent de partir, on prendra « les moyens légaux nécessaires ». Une résolution envisage de couper l'électricité et le téléphone sur le site à partir du 4 juillet. Un promoteur présent fait remarquer qu'aucun acheteur n'aurait pu obtenir 36 acres et sept maisons au prix payé par la municipalité."],
+  ['13-15 juin 2003', "Fin de semaine d'ateliers sur la désobéissance civile, avec des groupes de Montréal : passé, présent et futur de Guindonville, techniques de barricades, caméra en état de crise, agitation-propagande, levée de fonds, films engagés, « visite guidée des parkings de Val-David ». Camping, toit pour les familles, bouffe végane bio, musique et feu en soirée. Le vendredi 13, un enquêteur de la SQ venu de Montréal se présente en médiateur, laisse sa carte, promet de rappeler. Le soir, une auto-patrouille monte le chemin privé ; un locataire reçoit une amende de 100 $ pour son chien sans laisse, sur son propre terrain."],
+  ['15 juin 2003', "Dîner communautaire en hommage à M. et Mme Guindon, au café du pionnier, « dans une ambiance intime et chaleureuse, tout en rire et en chanson »."],
+  ['17 juin 2003', "Première réunion du comité municipal sur le logement, formé après le mouvement de protestation. Un groupe de ressources techniques présente les programmes AccèsLogis et Logement abordable. Délai moyen de réalisation : deux ans. « Détruire pour mieux reconstruire, paraît-il ? »"],
+  ['18 juin 2003', "Le National Post publie « Villagers losing homes to parking lot »."],
+  ['21-23 juin 2003', "« Super vente de garage à Guindonville » : animation, clowns, musique, maquillage pour les enfants, « vente aux enchères » des maisons de M. Guindon. Le 22, François Saillant, du FRAPRU, visite le site et demande l'intervention du ministère des Affaires municipales."],
+  ['29 juin 2003', "Dimanche Magazine (radio de Radio-Canada) diffuse « Les expropriés de Guindonville », de Chantal Lavigne."],
+  ['1er juillet 2003', "Date de l'éviction. Des travailleurs viennent débrancher le câble et couper l'eau. Les locataires et leurs sympathisants restent : l'occupation commence. Des plates-formes sont installées dans les arbres et sur les toits."],
+  ['2 juillet 2003', "Conférence de presse des occupants sur le site."],
+  ['3 juillet 2003', "Deux voitures de la Sûreté du Québec escortent un camion de Bell Canada « pour déconnecter les voisins, mais pas nous ! »."],
+  ['4 juillet 2003', "Un huissier vient demander aux locataires de partir. The Gazette : « Defiant Val David tenants take to trees after eviction »."],
+  ['5 juillet 2003', "Manifestation artistique : peinture de la maison de Marie en direct, au son du violoncelle de François Myrand. Les médias arrivent en nombre ; les camions de télévision campent sur place. Canoë : « La résistance pacifique se poursuit à Guindonville »."],
+  ['6 juillet 2003, 6 h', "Dimanche matin, les médias repartis, une quarantaine de policiers de la SQ débarquent. Une quinzaine d'occupants sont sortis des maisons. Kathy est enchaînée sur le toit de sa maison à un baril de béton de 800 livres ; un autre résistant est attaché à un second baril ; Julie est à la cime d'un arbre, un cadenas en U autour du cou. La démolition commence sous leurs yeux, par une compagnie de Saint-Jovite : ni les employés municipaux ni aucune entreprise du secteur n'ont accepté de le faire. Marteau-piqueur et scie pour libérer les bras ; échelle de pompier empruntée à Mont-Tremblant pour Julie, délogée vers midi. Neuf arrestations selon Zone Libre, sept selon un témoin ; accusations d'entrave, libération en fin d'après-midi avec interdiction de revenir. Le même matin, à Montréal, l'anti-émeute affronte des manifestants pour le logement au parc Lafontaine."],
+  ['7 juillet 2003', "Point de presse de la municipalité à 11 h. Deux autobus du FRAPRU arrivent de Montréal, Québec et Trois-Rivières : près de 200 personnes marchent dans les rues de Val-David, passent devant l'hôtel de ville et terminent au café de M. Guindon."],
+  ['10-20 juillet 2003', "Le Devoir publie « L'antithèse d'un paysage banalisé », de Stéphane Bertrand, petit-fils d'Yvon Guindon (10 juillet), puis « Sacrifice pour un parc qui ne verra peut-être jamais le jour » (20 juillet). Radio-Canada : « Le projet de parc régional est menacé » (16 juillet)."],
+  ['26 août 2003', "Val-David annonce son intention d'acheter les terrains du promoteur qui a acquis les trois quarts du parc « pour assurer l'intégrité du parc Dufresne »."],
+  ['31 octobre 2003', "Zone Libre diffuse « Le combat pour sauver Guindonville » (journaliste Geneviève Rossier, réalisatrice Johanne Bonneau). Le stationnement n'est toujours pas construit : les locataires auraient pu rester chez eux jusqu'à ce jour, comme ils l'avaient demandé en cour."],
+  ['2 novembre 2003', "Référendum à Val-David et Val-Morin sur un emprunt de 500 000 $ pour exproprier le promoteur : 1 054 Oui, 705 Non à Val-David. Élections municipales le même jour."],
+  ['Après', "Le terrain, pris « pour la communauté », reste quelque temps inaccessible aux citoyens, gardé par une agence de sécurité privée. Le site de 2003 se terminait ainsi : « Guindonville est peut-être démoli… mais existera toujours dans nos cœurs ! » En 2018, François Saillant consacre un chapitre de Lutter pour un toit à « Guindonville blues (2002-2003) »."],
+];
+---
+<Base title="Chronologie" current="/chronologie/">
+  <p class="eyebrow">Chronologie</p>
+  <h1>De 1941 au 2 novembre 2003</h1>
+  <p class="lede">Reconstituée à partir du site de 2003 (résumé de l'affaire, mises à jour), de l'histoire du parc régional publiée par Histoire Val-David, des articles du Devoir et du reportage de Zone Libre. Quand les sources diffèrent, les deux chiffres sont donnés.</p>
+  <ol class="timeline">
+    {events.map(([when, what]) => (
+      <li><time>{when}</time><p>{what}</p></li>
+    ))}
+  </ol>
+  <div class="note">Sur la question des ministres : la pétition de 500 noms s'adressait à André Boisclair, ministre des Affaires municipales du gouvernement Landry, jusqu'à l'élection du 14 avril 2003. À partir du 29 avril, c'est Jean-Marc Fournier, du gouvernement Charest, qui occupe le poste, et c'est à lui que le FRAPRU demande d'intervenir en juin et juillet.</div>
+</Base>

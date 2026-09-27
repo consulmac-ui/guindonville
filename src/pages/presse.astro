@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+const press = [
+  ['2 févr. 2003', 'Le Devoir', 'Plus de bidonville à Val-David ?'],
+  ['4 févr. 2003', 'Le Devoir', "Bidonville à Val-David – Un commerçant s'oppose…"],
+  ['6 mars 2003', 'Le Devoir', 'Expropriation à Val-David – Le propriétaire de Guindonville conteste le prix offert'],
+  ['Mars 2003', 'Le Couac', "L'affaire Guindonville"],
+  ['23 avril 2003', 'Le Devoir', 'Val-David : Desjardins épouse la cause…'],
+  ['24 avril 2003', 'Le Devoir', 'Expropriation à Val-David'],
+  ['1er mai 2003', 'Le Devoir', 'Réplique à Richard Desjardins'],
+  ['Juin 2003', "L'Info du Nord", 'Article sur Guindonville'],
+  ['9 juin 2003', 'CMAQ / Indymedia', 'Premier face-à-face à Guindonville ; confrontation entre locataires et mairie'],
+  ['18 juin 2003', 'National Post', 'Villagers losing homes to parking lot'],
+  ['21 juin 2003', 'Radio-Canada', "Plusieurs Montréalais voient le 1er juillet arriver avec angoisse"],
+  ['25-27 juin 2003', 'FRAPRU', 'Le FRAPRU appuie les locataires de Guindonville'],
+  ['26 juin 2003', 'Le Devoir', "Guindonville : le FRAPRU demande l'intervention du ministre"],
+  ['29 juin 2003', 'Radio-Canada, Dimanche Magazine', 'Les expropriés de Guindonville (Chantal Lavigne)'],
+  ['30 juin 2003', 'CMAQ', "Guindonville : à un jour de l'éviction, la résistance perdure"],
+  ['Juillet 2003', 'Radio-Canada', "Des citoyens défient toujours un ordre d'éviction à Val-David"],
+  ['4 juillet 2003', 'The Gazette', 'Defiant Val David tenants take to trees after eviction'],
+  ['4 juillet 2003', 'Le Devoir', "Guindonville : le FRAPRU demande l'intervention du ministre"],
+  ['5 juillet 2003', 'Canoë', 'Val-David : la résistance pacifique se poursuit à Guindonville'],
+  ['6 juillet 2003', 'LCN', 'Opération policière à Guindonville (en direct de Val-David)'],
+  ['6 juillet 2003', 'The Globe and Mail', 'Police, housing activists clash in Montreal'],
+  ['7 juillet 2003', 'Le Devoir', "Lettre : Ce matin, en lisant le journal, j'ai pleuré"],
+  ['7 juillet 2003', 'FRAPRU', 'Manifestation en solidarité avec Guindonville, à Val-David'],
+  ['Juillet 2003', 'Le Devoir', 'Guindonville rasé'],
+  ['10 juillet 2003', 'Le Devoir', "Guindonville – L'antithèse d'un paysage banalisé (Stéphane Bertrand)"],
+  ['11 juillet 2003', 'CMAQ', "Interdiction d'enregistrer les débats au conseil municipal de Val-David"],
+  ['15 juillet 2003', 'Indymedia', 'Guindonville résiste'],
+  ['16 juillet 2003', 'Radio-Canada', 'Le projet de parc régional est menacé'],
+  ['Juillet 2003', 'Le Couac', "L'affaire Guindonville – Suite et fin ?"],
+  ['20 juillet 2003', 'Le Devoir', 'Guindonville – Sacrifice pour un parc qui ne verra peut-être jamais le jour'],
+  ['31 oct. 2003', 'Radio-Canada, Zone Libre', 'Le combat pour sauver Guindonville'],
+  ['3 nov. 2003', 'Radio-Canada', "Parc Dufresne : c'est OUI"],
+  ['11 oct. 2013', 'La Presse', 'Jean-Marc Beausoleil : le sismographe de Guindonville (roman)'],
+  ['2018', 'Écosociété', "François Saillant, Lutter pour un toit, chapitre 11 : « À Val-David, Guindonville blues (2002-2003) »"],
+];
+---
+<Base title="Revue de presse" current="/presse/">
+  <p class="eyebrow">La presse</p>
+  <h1>Ce qu'en ont dit les médias</h1>
+  <p class="lede">La revue de presse que le site tenait à jour en 2003, complétée par ce qui a paru depuis. Les camions de télévision ont campé sur le chemin du Condor au début de juillet ; l'histoire a fait la nouvelle plusieurs fois par jour.</p>
+
+  <div class="prose">
+    <h2>Zone Libre, Radio-Canada, 31 octobre 2003</h2>
+    <p>« Le combat pour sauver Guindonville », journaliste Geneviève Rossier, réalisatrice Johanne Bonneau. L'équipe a accompagné les résidents du printemps à la démolition. En résumé : « Au mois de juillet dernier, à Val-David, un groupe de manifestants occupe un terrain exproprié par la municipalité pour construire un stationnement. Les locataires de sept maisonnettes situées sur ce terrain ont été expulsés. Guindonville est soudain devenu le symbole de la lutte pour le logement social au Québec. »</p>
+    <p>Le reportage donnait la parole à Jean Bureau, Jean-Pierre Charce, Chloé, Bob et Kathy, Roland et Marie, à Yvon Guindon, au directeur général de la municipalité et à un propriétaire dont le terrain avait été écarté. Il révélait aussi qu'un promoteur avait acheté en catimini les trois quarts du parc Dufresne. La page texte de l'émission est <a href="https://ici.radio-canada.ca/actualite/zonelibre/03-10/guindonville.asp" rel="noopener">toujours en ligne chez Radio-Canada</a> ; la vidéo, diffusée à l'époque en Windows Media, ne l'est plus.</p>
+
+    <h2>Les articles</h2>
+  </div>
+  <ul class="press">
+    {press.map(([date, outlet, title]) => (
+      <li><span>{date}</span><div><strong>{outlet}</strong> — {title}</div></li>
+    ))}
+  </ul>
+  <div class="note">Les liens de 2003 vers ces articles ne fonctionnent plus pour la plupart. Les titres sont ceux notés sur le site à l'époque ; les articles du Devoir se retrouvent dans ses archives sous le mot-clé « Guindonville ».</div>
+</Base>

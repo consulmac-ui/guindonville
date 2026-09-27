@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+const stills = [
+  ['film-01-maison-au-soleil.jpg', "L'ouverture : la maison verte au soleil peint sur le pignon."],
+  ['film-02-enfant.jpg', "Un enfant fait le signe de paix à la caméra, une nuit de veillée."],
+  ['film-03-console.jpg', "La console de son, éclairée en rouge."],
+  ['film-04-sq-solstice.jpg', "La soirée du solstice : l'auto-patrouille sur le chemin, les imperméables jaunes."],
+  ['film-05-qg-communications.jpg', "Le quartier général des communications : le téléphone, le babillard « Nous appuyons Guindonville »."],
+  ['film-06-scene.jpg', "La petite scène de planches ramassées, sa bannière guindonville.ca.tc et ses guirlandes."],
+  ['film-07-clavier.jpg', "Un des artistes venus appuyer les résidents, au clavier."],
+  ['film-08-veillee.jpg', "La veillée à la guitare, une des dernières nuits."],
+  ['film-09-toit.jpg', "Sur le toit, avec la bannière, le 6 juillet au matin."],
+  ['film-10-pelle.jpg', "La pelle mécanique, vue à travers les feuilles."],
+  ['film-11-baril.jpg', "Les pompiers sur le toit, avec le baril."],
+  ['film-12-debris.jpg', "Les débris et la pelle, en fin de matinée."],
+];
+---
+<Base title="Le film de 2003" current="/film/">
+  <p class="eyebrow">Le film</p>
+  <h1>« Il aurait été une fois… Guindonville »</h1>
+  <p class="lede">Un film de 1 h 26 tourné en mini DV et monté avec les moyens du bord, en 2003, par Christian Brochu, qui s'occupait des communications, du Wi-Fi, des caméras et de la technique des spectacles sur le site. Des veillées de juin jusqu'à la démolition du 6 juillet et aux bulletins de nouvelles de LCN, c'est le seul document filmé de l'intérieur.</p>
+
+  <div class="prose">
+    <h2>Trois extraits</h2>
+    <p>Les images ont la définition de l'époque (320 pixels de large). Le son est celui de la caméra.</p>
+  </div>
+
+  <div class="gallery">
+    <figure class="wide">
+      <video controls preload="metadata" poster="/img/poster-la-scene.jpg" src="/video/la-scene.mp4"></video>
+      <figcaption><strong>La scène</strong> (4 min 30) · Fin juin 2003. Les artistes venus appuyer les résidents jouent sur la scène de planches ramassées, sous les guirlandes, devant la bannière guindonville.ca.tc.</figcaption>
+    </figure>
+    <figure class="wide">
+      <video controls preload="metadata" poster="/img/poster-le-6-juillet.jpg" src="/video/le-6-juillet.mp4"></video>
+      <figcaption><strong>Le 6 juillet</strong> (7 min 38) · « Le "sauvetage" de Kathy et La Schtroumpfette Julie. » Les gens sur le toit, la pelle mécanique à travers les feuilles, les pompiers en nacelle, le baril, le photographe de presse, les débris.</figcaption>
+    </figure>
+    <figure class="wide">
+      <video controls preload="metadata" poster="/img/poster-la-demolition-2003.jpg" src="/video/la-demolition-2003.mp4"></video>
+      <figcaption><strong>La démolition, clip de 2003</strong> (3 min 28) · Le montage court que le site diffusait à l'époque en QuickTime : les pompiers et le baril, la pelle mécanique, les policiers, les débris.</figcaption>
+    </figure>
+  </div>
+
+  <div class="gallery">
+    <figure>
+      <video controls preload="metadata" poster="/img/poster-maison-de-kathy.jpg" src="/video/maison-de-kathy.mp4"></video>
+      <figcaption><strong>La maison de Kathy</strong> (7 s) · Le toit de la maison de bois rond, entre les feuilles, avant la démolition.</figcaption>
+    </figure>
+    <figure>
+      <video controls preload="metadata" poster="/img/poster-julie-dans-l-arbre.jpg" src="/video/julie-dans-l-arbre.mp4"></video>
+      <figcaption><strong>Julie dans l'arbre</strong> (8 s) · La plate-forme, tout en haut du conifère.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose">
+    <h2>Ce qu'il y a dans le film complet</h2>
+    <ol>
+      <li><strong>Une nuit de veillée</strong> (17 min). La maison au soleil, un enfant qui fait le signe de paix, la console, un feu, un musicien dans l'herbe. « En espérant vous voir à Guindonville ! »</li>
+      <li><strong>Une entrevue</strong> dans une maison de bois.</li>
+      <li><strong>La soirée du solstice… et Indhara.</strong> L'auto-patrouille de la SQ sur le chemin privé. « Savez-vous que notre ami enquêteur ne rappelle toujours pas ??!! »</li>
+      <li><strong>Le débranchement</strong> sous escorte policière, les maisons, le jardinier à la pelle.</li>
+      <li><strong>Le QG des communications</strong>, une réunion autour d'une grande table, et cette question : « Savez-vous qu'on a jamais parlé du type de construction ??? »</li>
+      <li><strong>Les spectacles</strong> sur la petite scène, puis la veillée à la guitare.</li>
+      <li><strong>Le 6 juillet</strong> : le sauvetage de Kathy et de Julie, la pelle, les pompiers, les débris.</li>
+      <li><strong>« On s'attache… à Guindonville »</strong> : les bulletins de LCN, « Opération policière à Guindonville », et l'anti-émeute au parc Lafontaine le même jour.</li>
+      <li><strong>Le carton final</strong>, en lettres qui se rassemblent : « Il aurait été une fois… Guindonville ».</li>
+    </ol>
+    <p>Le film complet est trop long pour être hébergé ici. Il sera relié à cette page dès qu'il sera en ligne.</p>
+  </div>
+
+  <h2>Images du film</h2>
+  <div class="gallery">
+    {stills.map(([file, caption]) => (
+      <figure><img src={`/img/${file}`} alt={caption} loading="lazy" /><figcaption>{caption}</figcaption></figure>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .gallery video { width: 100%; display: block; background: #000; aspect-ratio: 4 / 3; }
+</style>
