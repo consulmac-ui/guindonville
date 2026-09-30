@@ -54,5 +54,33 @@ const fullTitle = title ? `${title} · Guindonville` : 'Guindonville — Val-Dav
         <p>Photos : locataires et sympathisants de Guindonville, 2003. Images du film : Christian Brochu, 2003.</p>
       </div>
     </footer>
+    <div class="lb" id="lb" hidden aria-modal="true" role="dialog" aria-label="Photo en grand">
+      <button class="lb-x" type="button" aria-label="Fermer">×</button>
+      <button class="lb-prev" type="button" aria-label="Photo précédente">‹</button>
+      <figure><img alt="" /><figcaption></figcaption></figure>
+      <button class="lb-next" type="button" aria-label="Photo suivante">›</button>
+    </div>
+    <script is:inline>
+    (function(){
+      var lb=document.getElementById('lb'); if(!lb) return;
+      var img=lb.querySelector('img'), cap=lb.querySelector('figcaption'), items=[], i=0, lastFocus=null;
+      document.querySelectorAll('main img').forEach(function(el){
+        if(el.closest('a')) return;
+        var fc=el.closest('figure'), c=fc&&fc.querySelector('figcaption'), h=el.closest('.house'), hs=h&&h.querySelector('strong');
+        items.push({el:el, cap:c?c.innerText:(hs?hs.innerText:(el.alt||''))});
+      });
+      function show(k){ i=(k+items.length)%items.length; var it=items[i]; img.src=it.el.currentSrc||it.el.src; img.alt=it.el.alt||''; cap.textContent=it.cap; }
+      function open(k){ lastFocus=document.activeElement; show(k); lb.hidden=false; document.documentElement.style.overflow='hidden'; lb.querySelector('.lb-x').focus(); }
+      function close(){ lb.hidden=true; img.removeAttribute('src'); document.documentElement.style.overflow=''; if(lastFocus) lastFocus.focus(); }
+      items.forEach(function(it,k){ it.el.style.cursor='zoom-in'; it.el.addEventListener('click',function(e){ e.preventDefault(); open(k); }); });
+      lb.querySelector('.lb-x').onclick=close;
+      lb.querySelector('.lb-prev').onclick=function(e){e.stopPropagation();show(i-1);};
+      lb.querySelector('.lb-next').onclick=function(e){e.stopPropagation();show(i+1);};
+      lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
+      document.addEventListener('keydown',function(e){ if(lb.hidden) return; if(e.key==='Escape') close(); else if(e.key==='ArrowRight') show(i+1); else if(e.key==='ArrowLeft') show(i-1); });
+      var x0=null; lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+      lb.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50) show(dx<0?i+1:i-1); x0=null; });
+    })();
+    </script>
   </body>
 </html>
