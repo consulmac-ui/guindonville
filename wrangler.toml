@@ -1,0 +1,10 @@
+# Configuration Cloudflare Pages du projet « guindonville ».
+# Sert uniquement à relier la base D1 du compteur de visites (liaison DB).
+name = "guindonville"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "guindonville-visites"
+database_id = "1c3f59fb-c3e0-4d84-aa0d-324548525f97"

@@ -52,6 +52,7 @@ const fullTitle = title ? `${title} · Guindonville` : 'Guindonville — Val-Dav
         <p>Site original (2003) réalisé par les locataires de Guindonville et leurs sympathisants, hébergé à l'époque à l'adresse guindonville.ca.tc. Reconstitué en 2026 à partir des copies conservées par la Wayback Machine (Internet Archive), avec les textes, les photos et la revue de presse d'origine.</p>
         <p>Les textes d'époque sont reproduits tels quels : ils reflètent le point de vue des locataires et de leurs appuis en 2003. Les faits datés recoupent les archives municipales, Le Devoir et le reportage de Zone Libre (Radio-Canada).</p>
         <p>Photos : locataires et sympathisants de Guindonville, 2003. Images du film : Christian Brochu, 2003.</p>
+        <p class="visites" id="visites" hidden></p>
       </div>
     </footer>
     <div class="lb" id="lb" hidden aria-modal="true" role="dialog" aria-label="Photo en grand">
@@ -60,6 +61,22 @@ const fullTitle = title ? `${title} · Guindonville` : 'Guindonville — Val-Dav
       <figure><img alt="" /><figcaption></figcaption></figure>
       <button class="lb-next" type="button" aria-label="Photo suivante">›</button>
     </div>
+    <script is:inline>
+    // Compteur de visites : une visite par séance d'onglet, robots simples ignorés,
+    // rien d'affiché si l'API ne répond pas. Aucune donnée personnelle n'est envoyée.
+    (function(){
+      var el=document.getElementById('visites'); if(!el||!window.fetch) return;
+      var en=location.pathname.indexOf('/english')===0, KEY='guindonville-visite', done=true;
+      try { done = sessionStorage.getItem(KEY)==='1'; } catch(e) {}
+      var count = !done && navigator.webdriver!==true;
+      fetch('/api/visits',{method:count?'POST':'GET'}).then(function(r){ return r.ok?r.json():null; }).then(function(d){
+        if(!d||typeof d.count!=='number') return;
+        if(count){ try { sessionStorage.setItem(KEY,'1'); } catch(e) {} }
+        el.textContent=new Intl.NumberFormat(en?'en-CA':'fr-CA').format(d.count)+(en?' visits':' visites');
+        el.hidden=false;
+      }).catch(function(){});
+    })();
+    </script>
     <script is:inline>
     (function(){
       var lb=document.getElementById('lb'); if(!lb) return;
