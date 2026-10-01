@@ -1,5 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
+// Bandeau de photos de la page d'accueil, dans l'ordre de l'histoire :
+// les maisons, la résistance, puis le matin du 6 juillet.
+const apercu = [
+  ['kathy-toit-baril.jpg', "Kathy sur le toit de sa maison, enchaînée à un baril de béton de 800 livres", "Kathy sur son toit"],
+  ['maison-1153.jpg', "La maison de pierre du 1153, chemin du Condor", "Le 1153, chemin du Condor"],
+  ['maison-2633.jpg', "Le 2633, « sur le top de la montagne », avec ses cadres turquoise", "Le 2633, en haut de la montagne"],
+  ['richard-desjardins-visite.jpg', "Richard Desjardins en visite à Guindonville, avril 2003, avec des résidents", "Richard Desjardins en visite, avril 2003"],
+  ['peinture-maison-marie-1.jpg', "5 juillet 2003 : la peinture de la maison de Marie, au son du violoncelle", "La maison de Marie, 5 juillet"],
+  ['plateforme-julie.jpg', "La plate-forme de Julie, dans un grand conifère", "La plate-forme de Julie"],
+  ['pelle-mecanique.jpg', "La pelle mécanique d'une compagnie de Saint-Jovite, le 6 juillet 2003", "La pelle mécanique, 6 juillet"],
+  ['debris-6-juillet.jpg', "Les débris : un frigidaire, un poêle, des meubles, des planches", "Ce qui est resté"],
+];
 ---
 <Base current="/">
   <div class="hero">
@@ -18,6 +30,13 @@ import Base from '../layouts/Base.astro';
       <img src="/img/logo-guindonville.png" alt="Logo de 2003 : un panneau de stationnement barré, avec le mot Guindonville" />
     </div>
   </div>
+
+  <section class="apercu" aria-label="Guindonville en photos">
+    {apercu.map(([file, alt, caption]) => (
+      <figure><img src={`/img/${file}`} alt={alt} loading="lazy" /><figcaption>{caption}</figcaption></figure>
+    ))}
+    <p class="apercu-plus"><a href="/photos/">Toutes les photos de 2003 →</a></p>
+  </section>
 
   <div class="prose">
     <blockquote>
